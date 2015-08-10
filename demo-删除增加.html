@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>  
+  <meta charset="utf-8" />
+  <title>面条校园 | 简历入口</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/icon.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />  
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+  <![endif]-->
+</head>
+<body class="" >
+             <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                      <h4 class="modal-title">Modal Title</h4>
+                    </div>
+                    <div class="modal-body">
+                       Modal body goes here
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn default" data-dismiss="modal">取消</button>
+                      <button type="button" id="deleteContent" data-dismiss="modal" class="btn blue">删除</button>
+                    </div>
+                  </div>
+                  <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+              </div>
+
+
+
+    <section id="content" class="">
+    <div class="row m-n">
+    <a id="new" class="col-sm-offset-1 col-sm-10 btn btn-s-md m-t-xl btn-success">
+                  添加 </a>
+     <a class="col-sm-offset-1 col-sm-10 btn btn-s-md m-t-xl btn-success" data-toggle="modal" href="#basic">
+                  出现模态 </a>
+    </div>
+    <div id="append-content" class="row m-n">
+   
+
+
+      
+    </div>
+  </section>
+
+
+  <!-- footer -->
+  <footer id="footer" style="margin-top:250px;">
+    <div class="text-center padder clearfix">
+      <p>
+        <small>Copyright &copy; 2014 591mian.com 版权所有 | 苏ICP备14002131号-4</small>
+      </p>
+    </div>
+  </footer>
+  <!-- / footer -->
+
+
+  <script src="js/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="js/bootstrap.js"></script>
+  <!-- App -->
+  <script src="js/app.js"></script>  
+  <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/app.plugin.js"></script>
+
+
+<script type="text/javascript">
+  $(function(){
+    var idCount = 1;
+    var currentDeleteId = "";
+    $("#new").click(function(){
+      $("#append-content").append("<div class='subContent col-sm-offset-1 col-sm-10 btn btn-s-md m-t-xl btn-success' id='subContent"+idCount+"' data-toggle='modal' href='#basic'>内容"+idCount+"</div>");
+      idCount++;
+    });
+      $(document).on('click',".subContent",function(){
+      currentDeleteId=$(this).attr("id");   
+    });
+    $("#deleteContent").click(function(){
+      $("#"+currentDeleteId).remove();
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en" class="">
+<head>  
+  <meta charset="utf-8" />
+  <title>面条校园 | 简历入口</title>
+  <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+  <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+  <link rel="stylesheet" href="css/animate.css" type="text/css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+  <link rel="stylesheet" href="css/icon.css" type="text/css" />
+  <link rel="stylesheet" href="css/font.css" type="text/css" />
+  <link rel="stylesheet" href="css/app.css" type="text/css" />  
+    <!--[if lt IE 9]>
+    <script src="js/ie/html5shiv.js"></script>
+    <script src="js/ie/respond.min.js"></script>
+    <script src="js/ie/excanvas.js"></script>
+    <![endif]-->
+  </head>
+  <body class="" >
+
+    <section class="scrollable wrapper">          
+      <div class="row" id="fileTurn">
+
+      </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer id="footer" style="margin-top:250px;">
+      <div class="text-center padder clearfix">
+        <p>
+          <small>Copyright &copy; 2014 591mian.com 版权所有 | 苏ICP备14002131号-4</small>
+        </p>
+      </div>
+    </footer>
+    <!-- / footer -->
+
+
+    <script src="js/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="js/bootstrap.js"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>  
+    <script src="js/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/app.plugin.js"></script>
+
+
+    <script type="text/javascript">
+      $(function(){
+        var FileTurning = function () {
+          var setting = [];
+
+          var firstPoint = 0;
+
+          var initSelf = function (set) {
+            set["fileTurnId"] = "#" + set["fileTurnId"];
+            setting = set;
+            var $targetContainer = $(setting['fileTurnId']);
+            $targetContainer.append("<div id = 'leftBtn' class='col-lg-1'><section class='panel panel-default'><div class='panel-body'><</div></section></div>");
+            for (var i = 0 ; i < setting["showNum"]; i++) {
+              $targetContainer.append("<div class='col-lg-1'><section class='panel panel-default'><div id = 'container"+i+"' class='panel-body'>"+setting["objects"][i]+"</div></section></div>");
+            };
+            $targetContainer.append("<div id = 'rightBtn' class='col-lg-1'><section class='panel panel-default'><div class='panel-body'>></div></section></div>");
+            
+          }
+
+          var bindRightButton = function () {
+
+          	$(document).on('click',"#rightBtn",function(){
+          		if (firstPoint<setting["objects"].length-setting["showNum"]) {
+          			firstPoint++;
+          			for (var i = 0 ; i < setting["showNum"]; i++) {
+          				var tempNum = firstPoint + i;
+          				var tempTarget = "#container" + i;
+          				$(tempTarget).html(setting["objects"][tempNum]);
+          			};
+          		};
+          	});
+
+
+          }
+
+          var bindLeftButton = function () {
+          	$(document).on('click',"#leftBtn",function(){
+          		if (firstPoint>0) {
+          			firstPoint--;
+          			for (var i = 0 ; i < setting["showNum"]; i++) {
+          				var tempNum = firstPoint + i;
+          				var tempTarget = "#container" + i;
+          				$(tempTarget).html(setting["objects"][tempNum]);
+          			};
+          		};
+          	});
+
+          }
+
+          return {
+            init : function (set) {
+              initSelf(set);
+              bindRightButton();
+              bindLeftButton();
+
+            },
+
+          };
+
+        }();
+
+        var setting = {
+          fileTurnId : "fileTurn",
+          objects : ["obj-1","obj-2","obj-3","obj-4","obj-5","obj-6","obj-7","obj-8","obj-9","obj-10","obj-11","obj-12"],
+          showNum : 7,
+        };
+
+        FileTurning.init(setting);
+
+
+      });
+</script>
+
+</body>
+</html>
